@@ -3,6 +3,7 @@ const express =  require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const authRoutes =  require("./routes/authRoutes")
 
 
 const app = express();
@@ -17,6 +18,9 @@ app.use(cors({
 
 // Database Connection
 connectDB();
+
+// API routes
+app.use("/api/auth",authRoutes);
 
 app.get("/",()=>{
     console.log("All well working")
